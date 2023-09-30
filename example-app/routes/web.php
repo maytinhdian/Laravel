@@ -18,19 +18,21 @@ use App\Http\Controllers\CategoriesController;
 
 Route::prefix('categories')->group(function () {
     //Danh sách chuyên mục 
-    Route::get('/', [CategoriesController::class, 'index']);
+    Route::get('/', [CategoriesController::class, 'index'])->name('categories.list');
 
     //Lấy chi tiết 1 chuyên mục ( Áp dụng show form sửa chuyên mục)
-    Route::get('/edit/{id}', [CategoriesController::class, 'getCategory']);
+    Route::get('/edit/{id}', [CategoriesController::class, 'getCategory'])->name('categories.edit');
     //Xử lý update chuyên mục 
-    Route::post('/edit/{id}', [CategoriesController::class, 'updateCategory']);
+    Route::post('/edit/{id}', [CategoriesController::class, 'updateCategory'])->name('categories.update');
+
+    
 
     //Hiển thị form add dữ liệu  
-    Route::get('/add', [CategoriesController::class, 'addCategory']);
+    Route::get('/add', [CategoriesController::class, 'addCategory'])->name('categories.add');
 
     //Xử lý thêm chuyên mục  
-    Route::get('/add',[CategoriesController::class, 'handleAddCategory']);
+    Route::post('/add',[CategoriesController::class, 'handleAddCategory']);
 
     //Xóa chuyên mục 
-    Route::delete('/delete/{id}',[CategoriesController::class, 'deleteCategory']);
+    Route::delete('/delete/{id}',[CategoriesController::class, 'deleteCategory'])->name('categories.delete');
 });
