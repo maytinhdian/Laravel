@@ -1,0 +1,26 @@
+1. Danh sách Module: 
+
+    - Quản lý người dùng 
+    - Quản lý nhóm người dùng 
+    - Quản lý bài viết  
+2. Phân quyền  
+    - Tạo 1 nhóm người dùng => Phân quyền cho nhóm 
+    - Thêm user cho nhóm => user đó sẽ có quyền trong nhóm đó 
+    - Các quyền: 
+        01: Module bài viết
+
+            + Xem danh sách các bài viết 
+            + Thêm bài viết
+            + Sửa bài viết: Bài viết của ai thì sửa của người đó 
+            + Xóa bài viết: Bài viết của ai thì xóa của người đó 
+        02: Module nhóm người dùng
+            + Xem danh sách nhóm 
+            + Thêm nhóm
+            + Sửa nhóm
+            + Xóa nhóm 
+            + Phân quyền
+        03: Module người dùng
+            + Xem người dùng
+            + Sửa người dùng 
+            + Xóa người dùng
+            
