@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return Product::all();
     }
 
     /**
@@ -29,7 +29,15 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'slug' => 'required',
+            'price' => 'required',
+
+        ]);
+
+        return Product::create($request->all());
     }
 
     /**
@@ -51,16 +59,25 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(UpdateProductRequest $request, $id)
     {
         //
+        $product = Product::find($id);
+        $product->update($request->all());
+        return $product;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         //
+        return Product::destroy($id);
+    }
+    public function search($name)
+    {
+        //
+        return Product::where('name', 'like', '%' . $name . '%')->get();
     }
 }
